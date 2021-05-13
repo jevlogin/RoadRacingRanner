@@ -16,7 +16,7 @@ namespace JevLogin
         {
             base.Init(leftMove, rightMove, speed);
             UpdateManager.SubscribeToUpdate(Move);
-            //_buttonGaz.onClick.AddListener(Reverse);
+            _buttonJump.onClick.AddListener(Reverse);
         }
 
         private void Reverse()
@@ -27,11 +27,11 @@ namespace JevLogin
         private void OnDestroy()
         {
             UpdateManager.UnsubscribeFromUpdate(Move);
-            //_buttonGaz.onClick.RemoveListener(Reverse);
+            _buttonJump.onClick.RemoveListener(Reverse);
         }
 
         //Todo - этот метод по идее приватный, но  я думал прикрутить его к кнопкам. но даже так не получается сделать верно.
-        public void Move()
+        private void Move()
         {
             if (_isGaz)
             {
