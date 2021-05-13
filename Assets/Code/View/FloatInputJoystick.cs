@@ -15,10 +15,11 @@ namespace JevLogin
 
         private SubscriptionProperty<bool> _isButtonPressedProperty;
         private bool _isGaz;
-        [SerializeField] private JointMotor2D _motor2DBack;
-        [SerializeField] private JointMotor2D _motor2DForward;
         [SerializeField] private float _speedMotor;
         private bool _activateSpeedMotor;
+
+        private SubscriptionProperty<bool> _isRotateWheels;
+
 
         public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed)
         {
@@ -28,16 +29,18 @@ namespace JevLogin
             if (_carViewRigidbody == null)
             {
                 var car = FindObjectOfType<CarView>();
+                _isRotateWheels = car.IsRotateWheels;
                 _carViewRigidbody = car.Rigidbody2D;
-                _motor2DBack = car.WheelJoint2DBack.motor;
-                _motor2DForward = car.WheelJoint2DForward.motor;
             }
+
 
             _buttonJump.onClick.AddListener(JumpCar);
 
             _isButtonPressedProperty = _buttonGaz.GetComponent<TestEvents>().IsButtonPressed;
             _isButtonPressedProperty.SubscriptionOnChange(SwitchValue);
         }
+
+        
 
         private void OnDestroy()
         {
@@ -84,18 +87,13 @@ namespace JevLogin
         private void StopMotorWheel()
         {
             _activateSpeedMotor = false;
-            _motor2DBack.motorSpeed = 0.0f;
-            _motor2DForward.motorSpeed = 0.0f;
+            _isRotateWheels.Value = _activateSpeedMotor;
         }
 
         private void RunMotorWheel()
         {
             _activateSpeedMotor = true;
-            _motor2DBack.motorSpeed = _speedMotor;
-            _motor2DForward.motorSpeed = _speedMotor;
-
-            Debug.Log($"RunMotorWheel - _motor2DBack.motorSpeed = {_motor2DBack.motorSpeed}");
-            Debug.Log($"RunMotorWheel - _motor2DBack.motorSpeed = {_motor2DForward.motorSpeed}");
+            _isRotateWheels.Value = _activateSpeedMotor;
         }
     }
 }

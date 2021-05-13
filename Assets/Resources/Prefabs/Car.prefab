@@ -412,6 +412,7 @@ MonoBehaviour:
   Rigidbody2D: {fileID: 6564744910338590843}
   WheelJoint2DBack: {fileID: 6564744908700401211}
   WheelJoint2DForward: {fileID: 6564744909878265386}
+  _speedMotor: 200
 --- !u!61 &6564744910338590842
 BoxCollider2D:
   m_ObjectHideFlags: 0
