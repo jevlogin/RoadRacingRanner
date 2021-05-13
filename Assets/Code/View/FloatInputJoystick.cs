@@ -16,6 +16,7 @@ namespace JevLogin
         {
             base.Init(leftMove, rightMove, speed);
             UpdateManager.SubscribeToUpdate(Move);
+            _buttonGaz.onClick.AddListener(Reverse);
         }
 
         private void Reverse()
