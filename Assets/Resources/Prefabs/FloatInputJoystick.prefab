@@ -441,3 +441,4 @@ MonoBehaviour:
   _buttonJump: {fileID: 2484675563647805663}
   _forceJump: 1.3
   _carViewRigidbody: {fileID: 0}
+  _speedMotor: 200
