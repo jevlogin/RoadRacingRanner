@@ -10,18 +10,20 @@ namespace JevLogin
         public WheelJoint2D WheelJoint2DBack;
         public WheelJoint2D WheelJoint2DForward;
         public SubscriptionProperty<bool> IsRotateWheels = new SubscriptionProperty<bool>();
+        
+        private JointMotor2D _motorStop;
+        private JointMotor2D _motorActivated;
 
-        private JointMotor2D _motor2DBack;
-        private JointMotor2D _motor2DForward;
         [SerializeField] private float _speedMotor;
 
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
-            
-            //TODO - назначаю мотор
-            _motor2DBack = WheelJoint2DBack.motor;
-            _motor2DForward = WheelJoint2DForward.motor;
+
+            _motorStop = WheelJoint2DBack.motor;
+
+            _motorActivated = _motorStop;
+            _motorActivated.motorSpeed = _speedMotor;
 
             IsRotateWheels.SubscriptionOnChange(SwitchValueRotate);
         }
@@ -33,7 +35,6 @@ namespace JevLogin
 
         private void SwitchValueRotate(bool value)
         {
-            //  Подписался на пропертю. и при изменении, запускаю разные методы.
             if (IsRotateWheels.Value)
             {
                 RunMotorWheel();
@@ -46,18 +47,14 @@ namespace JevLogin
 
         private void StopMotorWheel()
         {
-            Debug.Log($"StopMotorWheel");
-
-            _motor2DBack.motorSpeed = 0.0f;
-            _motor2DForward.motorSpeed = 0.0f;
+            WheelJoint2DBack.motor = _motorStop;
+            WheelJoint2DForward.motor = _motorStop;
         }
 
         private void RunMotorWheel()
         {
-            Debug.Log($"RunMotorWheel");
-
-            _motor2DBack.motorSpeed = _speedMotor;
-            _motor2DForward.motorSpeed = _speedMotor;
+            WheelJoint2DBack.motor = _motorActivated;
+            WheelJoint2DForward.motor = _motorActivated;
         }
     }
 }

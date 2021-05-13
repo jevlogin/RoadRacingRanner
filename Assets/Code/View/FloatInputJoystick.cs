@@ -40,8 +40,6 @@ namespace JevLogin
             _isButtonPressedProperty.SubscriptionOnChange(SwitchValue);
         }
 
-        
-
         private void OnDestroy()
         {
             UpdateManager.UnsubscribeFromUpdate(Move);
@@ -53,7 +51,6 @@ namespace JevLogin
         {
             _carViewRigidbody.AddForce(Vector2.up * _speed * _forceJump, ForceMode2D.Impulse);
         }
-
 
         private void SwitchValue(bool value)
         {
