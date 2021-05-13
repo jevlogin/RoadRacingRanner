@@ -1,4 +1,5 @@
 ﻿using JoostenProductions;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,33 +10,51 @@ namespace JevLogin
     {
         [SerializeField] private Button _buttonGaz;
         [SerializeField] private Button _buttonJump;
-        [SerializeField] private float _reverseSpeed = 1;
+        [SerializeField] private float _forceJump;
+
         private bool _isGaz;
+        private SubscriptionProperty<bool> _isButtonPressedProperty;
+        [SerializeField] private Rigidbody2D _carViewRigidbody;
 
         public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed)
         {
             base.Init(leftMove, rightMove, speed);
             UpdateManager.SubscribeToUpdate(Move);
-            _buttonJump.onClick.AddListener(Reverse);
-        }
 
-        private void Reverse()
-        {
-            _reverseSpeed *= -1;
+            if (_carViewRigidbody == null)
+            {
+                _carViewRigidbody = FindObjectOfType<CarView>().Rigidbody2D; 
+            }
+
+            _buttonJump.onClick.AddListener(JumpCar);
+
+            _isButtonPressedProperty = _buttonGaz.GetComponent<TestEvents>().IsButtonPressed;
+            _isButtonPressedProperty.SubscriptionOnChange(SwitchValue);
         }
 
         private void OnDestroy()
         {
             UpdateManager.UnsubscribeFromUpdate(Move);
-            _buttonJump.onClick.RemoveListener(Reverse);
+            _buttonJump.onClick.RemoveListener(JumpCar);
+
+            _isButtonPressedProperty.UnSubscriptionOnChange(SwitchValue);
+        }
+        private void JumpCar()
+        {
+            _carViewRigidbody.AddForce(Vector2.up * _speed * _forceJump, ForceMode2D.Impulse);
+        }
+       
+
+        private void SwitchValue(bool value)
+        {
+            _isGaz = value;
         }
 
-        //Todo - этот метод по идее приватный, но  я думал прикрутить его к кнопкам. но даже так не получается сделать верно.
         private void Move()
         {
             if (_isGaz)
             {
-                float moveStep = _speed * Time.deltaTime * _reverseSpeed;
+                float moveStep = _speed * Time.deltaTime;
                 if (moveStep > 0)
                 {
                     OnRightMove(moveStep);
@@ -43,13 +62,8 @@ namespace JevLogin
                 else if (moveStep < 0)
                 {
                     OnLeftMove(moveStep);
-                } 
+                }
             }
-        }
-
-        public void ActivatedGaz()
-        {
-            _isGaz = !_isGaz;
         }
     }
 }

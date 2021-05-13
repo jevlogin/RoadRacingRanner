@@ -11,20 +11,18 @@ namespace JevLogin
 
         private readonly ResourcePath _viewPath;
         private BaseInputView _view;
+        private CarController _carView;
 
         #endregion
 
 
         #region ClassLifeCycles
 
-        public InputGameController(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff, Car currentCar, Transform placeForUi)
+        public InputGameController(SubscriptionProperty<float> leftMoveDiff, 
+            SubscriptionProperty<float> rightMoveDiff, Car currentCar, CarController carView)
         {
-#if UNITY_ANDROID
+            _carView = carView;
             _viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.FLOATINPUTJOYSTICK) };
-#endif
-#if UNITY_EDITOR
-            _viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.FLOATINPUTJOYSTICK) };
-#endif
             _view = LoadView<BaseInputView>(_viewPath);
             _view.Init(leftMoveDiff, rightMoveDiff, currentCar.Speed);
         }

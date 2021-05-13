@@ -12,11 +12,12 @@ namespace JevLogin
             var tapeBackgroundController = new TapeBackgroundController(leftMoveDiff, rightMoveDiff);
             AddController(tapeBackgroundController);
 
-            var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar, placeForUi);
-            AddController(inputGameController);
-
             var carController = new CarController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
             AddController(carController);
+
+            var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar, carController);
+            AddController(inputGameController);
+
         }
     }
 }

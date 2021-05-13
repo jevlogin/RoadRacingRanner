@@ -4,41 +4,19 @@ using UnityEngine.EventSystems;
 
 namespace JevLogin
 {
-    internal sealed class TestEvents : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler
+    internal sealed class TestEvents : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        public bool IsButtonPressed;
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            Debug.Log("OnBeginDrag");
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            Debug.Log("OnDrag");
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            Debug.Log("OnEndDrag");
-        }
+        public SubscriptionProperty<bool> IsButtonPressed = new SubscriptionProperty<bool>();
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("OnPointerDown");
-
-            //if (Input.touchCount > 0)
-            //{
-            //    transform.localScale *= 1.1f;
-            //}
-
-            IsButtonPressed = true;
+            IsButtonPressed.Value = true;
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            Debug.Log("OnPointerUp");
-            IsButtonPressed = false;
+            IsButtonPressed.Value = false;
         }
     }
 }
