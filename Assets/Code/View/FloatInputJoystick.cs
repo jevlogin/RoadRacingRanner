@@ -1,70 +1,46 @@
 ﻿using JoostenProductions;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
 
 
 namespace JevLogin
 {
-    internal sealed class FloatInputJoystick : BaseInputView, IPointerDownHandler, IPointerUpHandler, IDragHandler
+    internal sealed class FloatInputJoystick : BaseInputView
     {
-        [SerializeField] private Joystick _joystick;
-        [SerializeField] private CanvasGroup _container;
+        [SerializeField] private Button _buttonGaz;
+        [SerializeField] private Button _buttonJump;
+        [SerializeField] private float _reverseSpeed = 1;
 
-        private bool _usedJoystick;
 
         public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed)
         {
             base.Init(leftMove, rightMove, speed);
-            //_usedJoystick = true;
             UpdateManager.SubscribeToUpdate(Move);
         }
 
+        private void Reverse()
+        {
+            _reverseSpeed *= -1;
+        }
 
         private void OnDestroy()
         {
             UpdateManager.UnsubscribeFromUpdate(Move);
+            _buttonGaz.onClick.RemoveListener(Reverse);
         }
 
-        private void Move()
+        //Todo - этот метод по идее приватный, но  я думал прикрутить его к кнопкам. но даже так не получается сделать верно.
+        public void Move()
         {
-            if (_usedJoystick)
+            float moveStep = _speed * Time.deltaTime * _reverseSpeed;
+            if (moveStep > 0)
             {
-                float moveStep = _speed * Time.deltaTime * CrossPlatformInputManager.GetAxis(AxisManager.HORIZONTAL);
-                if (moveStep > 0)
-                {
-                    OnRightMove(moveStep);
-                }
-                else if (moveStep < 0)
-                {
-                    OnLeftMove(moveStep);
-                }
+                OnRightMove(moveStep);
             }
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            Debug.Log($"OnDrag");
-
-            _joystick.OnDrag(eventData);
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            Debug.Log($"OnPointerDown");
-            _joystick.transform.position = eventData.position;
-            _joystick.SetStartPosition(eventData.position);
-            _joystick.OnPointerDown(eventData);
-            _usedJoystick = true;
-            _container.alpha = 1;
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            Debug.Log($"OnPointerUp");
-
-            _usedJoystick = false;
-            _container.alpha = 0;
+            else if (moveStep < 0)
+            {
+                OnLeftMove(moveStep);
+            }
         }
     }
 }

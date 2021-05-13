@@ -1,6 +1,5 @@
 ﻿using JoostenProductions;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 
 namespace JevLogin
@@ -27,7 +26,7 @@ namespace JevLogin
 
         private void Move()
         {
-            float moveStep = 10 * Time.deltaTime * CrossPlatformInputManager.GetAxis(AxisManager.HORIZONTAL);
+            float moveStep = 10 * Time.deltaTime * Input.GetAxis(AxisManager.HORIZONTAL);
             if (moveStep > 0)
             {
                 OnRightMove(moveStep);

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using JoostenProductions;
+using System.IO;
 using UnityEngine;
 using Object = UnityEngine.Object;
 //TODO IAbilityActivator
@@ -11,18 +12,22 @@ namespace JevLogin
         #region Fields
 
         private readonly ResourcePath _viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.CAR) };
-        private GameObject _view;
-
+        private readonly SubscriptionProperty<float> _leftMoveDiff;
+        private readonly SubscriptionProperty<float> _rightMoveDiff;
+        private CarView _carView;
         #endregion
 
 
         #region ClassLifeCycles
 
-        public CarController(Car currentCar)
+        public CarController(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff, Car currentCar)
         {
-            _view = LoadView<CarView>(_viewPath).gameObject;
+            _carView = LoadView<CarView>(_viewPath);
+            _leftMoveDiff = leftMoveDiff;
+            _rightMoveDiff = rightMoveDiff;
         }
 
+       
         #endregion
 
 

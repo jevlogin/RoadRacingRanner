@@ -143,7 +143,7 @@ WheelJoint2D:
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 100
+    m_MotorSpeed: 200
     m_MaximumMotorForce: 10000
 --- !u!1 &6564744909878265384
 GameObject:
@@ -288,7 +288,7 @@ WheelJoint2D:
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 100
+    m_MotorSpeed: 200
     m_MaximumMotorForce: 10000
 --- !u!1 &6564744910338590847
 GameObject:
@@ -409,7 +409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610019fb0d0ecc418c968d025f5f499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startForce: 0
+  _speed: 50
+  _wheel:
+  - {fileID: 6564744908700401204}
+  - {fileID: 6564744909878265383}
 --- !u!61 &6564744910338590842
 BoxCollider2D:
   m_ObjectHideFlags: 0

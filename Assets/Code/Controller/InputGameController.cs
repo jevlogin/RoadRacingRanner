@@ -17,16 +17,13 @@ namespace JevLogin
 
         #region ClassLifeCycles
 
-        public InputGameController(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff, Car currentCar)
+        public InputGameController(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff, Car currentCar, Transform placeForUi)
         {
 #if UNITY_ANDROID
-            //_viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.MOBILESINGLESTICKCONTROL) };
             _viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.FLOATINPUTJOYSTICK) };
 #endif
 #if UNITY_EDITOR
-            //_viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.ENDLESSMOVE) };
             _viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.FLOATINPUTJOYSTICK) };
-
 #endif
             _view = LoadView<BaseInputView>(_viewPath);
             _view.Init(leftMoveDiff, rightMoveDiff, currentCar.Speed);
