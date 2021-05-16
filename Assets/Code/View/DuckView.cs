@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -17,6 +18,8 @@ namespace JevLogin
         private Rigidbody2D _rigidbody2D;
         private Collider2D _collider2D;
         private bool _isDied = false;
+        private SubscriptionProperty<int> _countBirdDead;
+        private float _lifeTime = 5.0f;
 
         #endregion
 
@@ -44,8 +47,17 @@ namespace JevLogin
                 _isDied = true;
                 _animator.SetBool("IsDied", _isDied);
 
+                //TODO - прибавляю значение к проперти.
+                _countBirdDead.Value++;
+
                 Destroy(gameObject, 3.0f);
             }
+        }
+
+        internal void Init(SubscriptionProperty<int> countBirdDead)
+        {
+            //TODO - инициализирую переменную
+            _countBirdDead = countBirdDead;
         }
 
         #endregion

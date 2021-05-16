@@ -4,15 +4,18 @@ using UnityEngine;
 
 namespace JevLogin
 {
-    internal sealed class CarSpawner : BaseInputView
+    internal sealed class BirdSpawner : BaseInputView
     {
         #region Fields
 
-        [SerializeField] private GameObject _carPrefab;
+        [SerializeField] private DuckView _birdPrefab;
         [SerializeField] private Transform[] _spawnPoints;
 
         [SerializeField] private float _minDelay = 0.1f;
         [SerializeField] private float _maxDelay = 1.0f;
+
+        private IAnalyticTools _unityAnalyticTools;
+        private SubscriptionProperty<int> _countBirdDead = new SubscriptionProperty<int>();
 
         #endregion
 
@@ -22,9 +25,17 @@ namespace JevLogin
         public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed)
         {
             base.Init(leftMove, rightMove, speed);
+            _unityAnalyticTools = new UnityAnalyticTools();
+
             StartCoroutine(SpawnCars());
         }
 
+
+        private void OnDestroy()
+        {
+            Debug.Log($"Count die Bird = {_countBirdDead.Value}");
+            _unityAnalyticTools.SendMessage($"Count die Bird = {_countBirdDead.Value}");
+        }
         #endregion
 
 
@@ -40,9 +51,10 @@ namespace JevLogin
                 int spawnIndex = Random.Range(0, _spawnPoints.Length);
                 Transform spawnPoint = _spawnPoints[spawnIndex];
 
-                var car = Instantiate(_carPrefab, spawnPoint.position, spawnPoint.rotation);
-                
-                Destroy(car, 5.0f);
+                var bird = Instantiate(_birdPrefab, spawnPoint.position, spawnPoint.rotation);
+                bird.Init(_countBirdDead);
+
+                Destroy(bird.gameObject, 3.0f);
             }
         }
 

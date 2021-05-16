@@ -32,7 +32,6 @@ namespace JevLogin
             _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
             _collider2D = GetComponent<Collider2D>();
             _collider2D.isTrigger = true;
-            
         }
 
         private void OnDestroy()

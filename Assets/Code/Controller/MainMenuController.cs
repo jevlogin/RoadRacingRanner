@@ -32,7 +32,7 @@ namespace JevLogin
             var bladeView = LoadView<BladeView>(placeForUi, _viewTrailRenderPath);
             bladeView.Init(leftMove, rightMove, _profilePlayer.CurrentCar.Speed);
 
-            var carSpawner = LoadView<CarSpawner>(new GameObject("MainMenu").transform, _viewCarSpawnerPath);
+            var carSpawner = LoadView<BirdSpawner>(new GameObject("MainMenu").transform, _viewCarSpawnerPath);
             carSpawner.Init(leftMove, rightMove, _profilePlayer.CurrentCar.Speed);
 
         } 
