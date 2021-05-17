@@ -19,7 +19,6 @@ namespace JevLogin
         private Collider2D _collider2D;
         private bool _isDied = false;
         private SubscriptionProperty<int> _countBirdDead;
-        private float _lifeTime = 5.0f;
 
         #endregion
 
