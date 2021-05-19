@@ -92,6 +92,8 @@
     <Compile Include="Assets\Code\Model\Car.cs" />
     <Compile Include="Assets\Code\Model\ProfilePlayer.cs" />
     <Compile Include="Assets\Code\Model\UnityAnalyticTools.cs" />
+    <Compile Include="Assets\Code\ScriptableObject\Inventory\ItemConfig.cs" />
+    <Compile Include="Assets\Code\ScriptableObject\Inventory\ItemInfo.cs" />
     <Compile Include="Assets\Code\Test\FinalBossLoot.cs" />
     <Compile Include="Assets\Code\TestEvents.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />
