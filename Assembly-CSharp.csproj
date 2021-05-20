@@ -123,6 +123,10 @@
     <Compile Include="Assets\Code\TestEvents.cs" />
     <Compile Include="Assets\Code\TestInventory\Inventory.cs" />
     <Compile Include="Assets\Code\TestInventory\InventoryCell.cs" />
+    <Compile Include="Assets\Code\TestInventory\ItemScenePresenter.cs" />
+    <Compile Include="Assets\Code\TestInventory\ItemsEjector.cs" />
+    <Compile Include="Assets\Code\TestInventory\ItemsObjectPool.cs" />
+    <Compile Include="Assets\Code\TestInventory\MovingAlongCurve.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsRewardVideo.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsVideo.cs" />

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace JevLogin
 {
-    internal class InventoryCell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
+    internal sealed class InventoryCell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
     {
         public event Action Injecting;
 

@@ -10,6 +10,7 @@ namespace JevLogin
         [SerializeField] private InventoryCell _inventoryCellPrefab;
         [SerializeField] private Transform _container;
         [SerializeField] private Transform _draggingParent;
+        [SerializeField] private ItemsEjector _ejector;
 
         private void OnEnable()
         {
@@ -30,6 +31,7 @@ namespace JevLogin
                 cell.Render(item);
 
                 cell.Injecting += () => Destroy(cell.gameObject);
+                cell.Injecting += () => _ejector.EjectFromPool(item, _ejector.transform.position, _ejector.transform.right);
             });
         }
     }
