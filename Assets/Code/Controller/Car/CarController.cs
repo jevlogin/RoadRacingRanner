@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace JevLogin
 {
-    internal class CarController : BaseController
+    internal class CarController : BaseController, IAbilityActivator
     {
         #region Fields
 
@@ -27,7 +27,12 @@ namespace JevLogin
             _rightMoveDiff = rightMoveDiff;
         }
 
-       
+        public GameObject GetViewObject()
+        {
+            throw new System.NotImplementedException();
+        }
+
+
         #endregion
 
 

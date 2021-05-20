@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace JevLogin
 {
     [CreateAssetMenu(fileName = "Item", menuName = "Data/Item", order = 51)]
-    internal sealed class ItemConfig : ScriptableObject
+    internal sealed class ItemConfig : ScriptableObject, IItem
     {
         [SerializeField] private int _id;
         [SerializeField] private ItemInfo _info;

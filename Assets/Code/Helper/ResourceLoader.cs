@@ -10,5 +10,10 @@ namespace JevLogin
         {
             return Resources.Load<GameObject>(viewPath.PathResource);
         }
+
+        internal static T LoadObject<T>(ResourcePath resourcePath) where T : Component
+        {
+            return Resources.Load<T>(resourcePath.PathResource);
+        }
     }
 }
