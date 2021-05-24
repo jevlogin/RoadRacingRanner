@@ -13,6 +13,8 @@ namespace JevLogin
 
         [SerializeField] private TextMeshProUGUI _nameField;
         [SerializeField] private Image _iconImage;
+        [SerializeField] private Button _removeButton;
+        [SerializeField] private Button _itemButton;
 
         private Transform _draggingParent;
         private Transform _originalParent;
@@ -25,23 +27,32 @@ namespace JevLogin
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            transform.SetParent(_draggingParent);
+            if (_itemButton.interactable)
+            {
+                transform.SetParent(_draggingParent); 
+            }
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position = Input.mousePosition;
+            if (_itemButton.interactable)
+            {
+                transform.position = Input.mousePosition;
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (In((RectTransform)_originalParent, eventData))
+            if (_itemButton.interactable)
             {
-                InsertInGrid(); 
-            }
-            else
-            {
-                Inject();
+                if (In((RectTransform)_originalParent, eventData))
+                {
+                    InsertInGrid();
+                }
+                else
+                {
+                    Inject();
+                } 
             }
         }
 
@@ -76,8 +87,9 @@ namespace JevLogin
         {
             _nameField.text = item.Info.Name;
             _iconImage.sprite = item.Info.Image;
+            _iconImage.enabled = true;
+            _iconImage.transform.parent.GetComponent<Button>().interactable = true;
+            _removeButton.interactable = true;
         }
-
-        
     }
 }

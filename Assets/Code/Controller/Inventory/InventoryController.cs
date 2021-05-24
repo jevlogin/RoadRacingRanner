@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -14,6 +15,8 @@ namespace JevLogin
         private readonly IInventoryModel _inventoryModel;
         private readonly IItemsRepository _itemsRepository;
         private readonly IInventoryView _inventoryView;
+
+        private event Action<bool> HideAndShowPanelInventory;
 
         #endregion
 
@@ -41,6 +44,11 @@ namespace JevLogin
         public void ShowInventory(Action callback)
         {
             
+        }
+
+        internal void Init()
+        {
+            _inventoryView.Display((_itemsRepository.Items.Values).ToList());
         }
     }
 }

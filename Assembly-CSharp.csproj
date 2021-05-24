@@ -68,6 +68,7 @@
     <Compile Include="Assets\Code\Controller\Ability\IAbilityCollectionView.cs" />
     <Compile Include="Assets\Code\Controller\BaseController.cs" />
     <Compile Include="Assets\Code\Controller\Car\CarController.cs" />
+    <Compile Include="Assets\Code\Controller\ContentDataSourceLoader.cs" />
     <Compile Include="Assets\Code\Controller\GameController.cs" />
     <Compile Include="Assets\Code\Controller\Input\InputGameController.cs" />
     <Compile Include="Assets\Code\Controller\Input\TapeBackgroundController.cs" />
@@ -121,12 +122,12 @@
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfigDataSource.cs" />
     <Compile Include="Assets\Code\Test\FinalBossLoot.cs" />
     <Compile Include="Assets\Code\TestEvents.cs" />
-    <Compile Include="Assets\Code\TestInventory\Inventory.cs" />
-    <Compile Include="Assets\Code\TestInventory\InventoryCell.cs" />
-    <Compile Include="Assets\Code\TestInventory\ItemScenePresenter.cs" />
-    <Compile Include="Assets\Code\TestInventory\ItemsEjector.cs" />
-    <Compile Include="Assets\Code\TestInventory\ItemsObjectPool.cs" />
-    <Compile Include="Assets\Code\TestInventory\MovingAlongCurve.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\Inventory.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\InventoryCell.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\ItemScenePresenter.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\ItemsEjector.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\ItemsObjectPool.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\MovingAlongCurve.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsRewardVideo.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsVideo.cs" />

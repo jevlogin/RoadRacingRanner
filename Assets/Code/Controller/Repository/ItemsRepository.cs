@@ -9,7 +9,7 @@ namespace JevLogin
         
         private Dictionary<int, IItem> _itemsMapById = new Dictionary<int, IItem>();
         public IReadOnlyDictionary<int, IItem> Items => _itemsMapById;
-        
+
         #endregion
 
 
@@ -43,7 +43,7 @@ namespace JevLogin
             return new Item
             {
                 Id = config.Id,
-                Info = new ItemInfo
+                Info = new ItemInfo()
                 {
                     Name = config.Info.Name,
                     Image = config.Info.Image

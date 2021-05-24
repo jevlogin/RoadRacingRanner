@@ -15,6 +15,7 @@ namespace JevLogin
         private readonly SubscriptionProperty<float> _leftMoveDiff;
         private readonly SubscriptionProperty<float> _rightMoveDiff;
         private CarView _carView;
+
         #endregion
 
 
@@ -26,6 +27,8 @@ namespace JevLogin
             _leftMoveDiff = leftMoveDiff;
             _rightMoveDiff = rightMoveDiff;
         }
+
+        internal CarView CarView { get => _carView; }
 
         public GameObject GetViewObject()
         {

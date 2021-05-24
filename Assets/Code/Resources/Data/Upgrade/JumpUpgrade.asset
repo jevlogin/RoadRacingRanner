@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ac6a3d3edd0e841b0cfdc409767650, type: 3}
-  m_Name: Ralling
+  m_Script: {fileID: 11500000, guid: fb98bd93e02d26c47985106376111c25, type: 3}
+  m_Name: JumpUpgrade
   m_EditorClassIdentifier: 
-  _id: 1
-  _info:
-    Name: Speed
-    Image: {fileID: 21300000, guid: a9e586127dd892549a174d49658ad9f1, type: 3}
+  ItemConfig: {fileID: 11400000, guid: c3a160c099c19294e8978dd31a0e9a34, type: 2}
+  Type: 2
+  ValueUpgrade: 1

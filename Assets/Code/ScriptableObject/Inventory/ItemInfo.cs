@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace JevLogin
 {
-    [System.Serializable]
-    internal struct ItemInfo
+    [Serializable]
+    public class ItemInfo
     {
         public string Name;
         public Sprite Image;
