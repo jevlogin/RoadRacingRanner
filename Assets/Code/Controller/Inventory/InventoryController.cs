@@ -15,8 +15,7 @@ namespace JevLogin
         private readonly IInventoryModel _inventoryModel;
         private readonly IItemsRepository _itemsRepository;
         private readonly IInventoryView _inventoryView;
-
-        private event Action<bool> HideAndShowPanelInventory;
+        private readonly ProfilePlayer _profilePlayer;
 
         #endregion
 
@@ -26,11 +25,13 @@ namespace JevLogin
         public InventoryController(
             [NotNull] IInventoryModel inventoryModel, 
             [NotNull] IItemsRepository itemsRepository, 
-            [NotNull] IInventoryView inventoryView)
+            [NotNull] IInventoryView inventoryView,
+            ProfilePlayer profilePlayer)
         {
             _inventoryModel = inventoryModel ?? throw new ArgumentNullException(nameof(inventoryModel));
             _itemsRepository = itemsRepository ?? throw new ArgumentNullException(nameof(itemsRepository));
             _inventoryView = inventoryView ?? throw new ArgumentNullException(nameof(inventoryView));
+            _profilePlayer = profilePlayer;
         } 
 
         #endregion
@@ -49,6 +50,19 @@ namespace JevLogin
         internal void Init()
         {
             _inventoryView.Display((_itemsRepository.Items.Values).ToList());
+            _inventoryView.Selected += _inventoryView_Selected;
+        }
+
+        private void _inventoryView_Selected(object sender, IItem e)
+        {
+            Debug.Log($"Выбрасываю предмет {e.Id} - Name = {e.Info.Name}");
+            if (_itemsRepository.Items.TryGetValue(e.Id, out var item))
+            {
+                if (item.Id == 1)
+                {
+                    _profilePlayer.CurrentCar.Speed += 1000;
+                }
+            }
         }
     }
 }

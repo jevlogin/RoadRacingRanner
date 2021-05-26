@@ -44,7 +44,7 @@ namespace JevLogin
 
             ItemsRepository itemsRepository = new ItemsRepository(_itemsConfigs);
 
-            var inventoryController = new InventoryController(_inventoryModel, itemsRepository, _inventoryView);
+            var inventoryController = new InventoryController(_inventoryModel, itemsRepository, _inventoryView, profilePlayer);
             inventoryController.Init();
             AddController(inventoryController);
 

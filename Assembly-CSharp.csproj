@@ -81,6 +81,8 @@
     <Compile Include="Assets\Code\Controller\SpeedUpgradeCarHandler.cs" />
     <Compile Include="Assets\Code\Controller\StubUpgradeCarHandler.cs" />
     <Compile Include="Assets\Code\Controller\UpgradeHandlerRepository.cs" />
+    <Compile Include="Assets\Code\DOTween\ButtonScaleBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\ScaleData.cs" />
     <Compile Include="Assets\Code\GunAbility.cs" />
     <Compile Include="Assets\Code\Helper\AxisManager.cs" />
     <Compile Include="Assets\Code\Helper\GameState.cs" />
@@ -122,12 +124,7 @@
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfigDataSource.cs" />
     <Compile Include="Assets\Code\Test\FinalBossLoot.cs" />
     <Compile Include="Assets\Code\TestEvents.cs" />
-    <Compile Include="Assets\Code\TestInventory\Test1\Inventory.cs" />
     <Compile Include="Assets\Code\TestInventory\Test1\InventoryCell.cs" />
-    <Compile Include="Assets\Code\TestInventory\Test1\ItemScenePresenter.cs" />
-    <Compile Include="Assets\Code\TestInventory\Test1\ItemsEjector.cs" />
-    <Compile Include="Assets\Code\TestInventory\Test1\ItemsObjectPool.cs" />
-    <Compile Include="Assets\Code\TestInventory\Test1\MovingAlongCurve.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsRewardVideo.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsVideo.cs" />
@@ -406,6 +403,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>F:/Program Files/Unity Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>F:/UnityProjects/RoadRacingRanner/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>F:/Program Files/Unity Hub/Editor/2019.4.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

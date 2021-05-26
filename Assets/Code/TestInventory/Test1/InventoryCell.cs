@@ -9,7 +9,7 @@ namespace JevLogin
 {
     internal sealed class InventoryCell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
     {
-        public event Action Injecting;
+        public event Action<IItem> Injecting;
 
         [SerializeField] private TextMeshProUGUI _nameField;
         [SerializeField] private Image _iconImage;
@@ -18,6 +18,7 @@ namespace JevLogin
 
         private Transform _draggingParent;
         private Transform _originalParent;
+        private IItem _item;
 
         public void Init(Transform draggingParent)
         {
@@ -51,20 +52,21 @@ namespace JevLogin
                 }
                 else
                 {
-                    Inject();
+                    Inject(_item);
                 } 
             }
         }
 
         private bool In(RectTransform originalParent, PointerEventData eventData)
         {
-            var res = originalParent.rect.Contains(transform.localPosition);
+            var res = originalParent.rect.Contains(eventData.position);
             return res;
         }
 
-        private void Inject()
+        private void Inject(IItem _item)
         {
-            Injecting?.Invoke();
+            Injecting?.Invoke(_item);
+            Destroy(gameObject);
         }
 
         private void InsertInGrid()
@@ -85,6 +87,7 @@ namespace JevLogin
 
         public void Render(IItem item)
         {
+            _item = item;
             _nameField.text = item.Info.Name;
             _iconImage.sprite = item.Info.Image;
             _iconImage.enabled = true;

@@ -53,6 +53,7 @@ namespace JevLogin
                 {
                     cell[i].Init(_inventoryPanel.transform);
                     cell[i].Render(_itemInfoCollection[i]);
+                    cell[i].Injecting += OnSelected;
                 }
             }
         }
