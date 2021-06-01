@@ -21,11 +21,14 @@ namespace JevLogin
         private SubscriptionProperty<bool> _isRotateWheels;
         private CarController _carController;
 
+        private CameraShakeBehaviour _cameraShake;
 
         public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed, CarController carController)
         {
             base.Init(leftMove, rightMove, speed, carController);
             _carController = carController;
+            _cameraShake = Camera.main.GetComponent<CameraShakeBehaviour>();
+
             UpdateManager.SubscribeToUpdate(Move);
 
             if (_carViewRigidbody == null)
@@ -52,6 +55,7 @@ namespace JevLogin
         private void JumpCar()
         {
             _carViewRigidbody.AddForce(Vector2.up * _speed * _forceJump, ForceMode2D.Impulse);
+            _cameraShake.CreateShake();
         }
 
         private void SwitchValue(bool value)

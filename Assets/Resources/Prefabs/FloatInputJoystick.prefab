@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6694648212302969331}
   - component: {fileID: 1493409975133174567}
   - component: {fileID: 2484675563647805663}
+  - component: {fileID: 3029356256866294547}
+  - component: {fileID: 5973272631197018549}
   m_Layer: 5
   m_Name: ButtonJump (1)
   m_TagString: Untagged
@@ -93,7 +95,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -118,6 +120,34 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3029356256866294547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388656097282164380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443fb765e17aff34ca070b0ccb4b2e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointerDownScale: {fileID: 11400000, guid: e23a5d29f0647ee4faf5bef0467c42b6, type: 2}
+  _pointerUpScale: {fileID: 11400000, guid: b7d62384952684a4c9642ffa6b95fc1a, type: 2}
+--- !u!114 &5973272631197018549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388656097282164380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ce079056c1a2e4cafee7c6fa3cca16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interval: 3
+  _rectTransform: {fileID: 7176272877042963920}
 --- !u!1 &1540558790021697414
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,10 +259,10 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.15, y: 0.3}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 300}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5296340836075334707
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -283,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

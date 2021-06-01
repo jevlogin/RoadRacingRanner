@@ -24,10 +24,12 @@ namespace JevLogin
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private float _diffAudio = 0.01f;
 
+
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             _audioSource = GetComponent<AudioSource>();
+
             _motorStop = WheelJoint2DBack.motor;
 
             _motorActivated = _motorStop;
