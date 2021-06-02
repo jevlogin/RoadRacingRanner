@@ -68,6 +68,7 @@
     <Compile Include="Assets\Code\Controller\Ability\IAbilityCollectionView.cs" />
     <Compile Include="Assets\Code\Controller\BaseController.cs" />
     <Compile Include="Assets\Code\Controller\Car\CarController.cs" />
+    <Compile Include="Assets\Code\Controller\ContentDataSourceLoader.cs" />
     <Compile Include="Assets\Code\Controller\GameController.cs" />
     <Compile Include="Assets\Code\Controller\Input\InputGameController.cs" />
     <Compile Include="Assets\Code\Controller\Input\TapeBackgroundController.cs" />
@@ -80,8 +81,17 @@
     <Compile Include="Assets\Code\Controller\SpeedUpgradeCarHandler.cs" />
     <Compile Include="Assets\Code\Controller\StubUpgradeCarHandler.cs" />
     <Compile Include="Assets\Code\Controller\UpgradeHandlerRepository.cs" />
+    <Compile Include="Assets\Code\DOTween\Button\ButtonFlareBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\Button\ButtonJumpBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\Button\ButtonScaleBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\Camera\CameraShakeBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\Camera\ShakeData.cs" />
+    <Compile Include="Assets\Code\DOTween\MessageBox\MessageBoxBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\SidePanel\SidePanelMoveBehaviour.cs" />
+    <Compile Include="Assets\Code\DOTween\SidePanel\SidePanelTween.cs" />
     <Compile Include="Assets\Code\GunAbility.cs" />
     <Compile Include="Assets\Code\Helper\AxisManager.cs" />
+    <Compile Include="Assets\Code\Helper\Extensions.cs" />
     <Compile Include="Assets\Code\Helper\GameState.cs" />
     <Compile Include="Assets\Code\Helper\ManagerPath.cs" />
     <Compile Include="Assets\Code\Helper\ResourceLoader.cs" />
@@ -99,6 +109,8 @@
     <Compile Include="Assets\Code\Interface\Ads\IAnalyticTools.cs" />
     <Compile Include="Assets\Code\Interface\Ads\IReadOnlySubscriptionAction.cs" />
     <Compile Include="Assets\Code\Interface\Ads\IShop.cs" />
+    <Compile Include="Assets\Code\Interface\DOTween\ISidePanelElementTween.cs" />
+    <Compile Include="Assets\Code\Interface\DOTween\MoveMode.cs" />
     <Compile Include="Assets\Code\Interface\Inventory\IInventoryController.cs" />
     <Compile Include="Assets\Code\Interface\Inventory\IInventoryModel.cs" />
     <Compile Include="Assets\Code\Interface\Inventory\IInventoryView.cs" />
@@ -115,18 +127,13 @@
     <Compile Include="Assets\Code\Model\UnityAnalyticTools.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Ability\AbilityItemConfig.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Ability\AbilityType.cs" />
+    <Compile Include="Assets\Code\ScriptableObject\DOTween\ScaleData.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Inventory\ItemConfig.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Inventory\ItemInfo.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfig.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfigDataSource.cs" />
-    <Compile Include="Assets\Code\Test\FinalBossLoot.cs" />
     <Compile Include="Assets\Code\TestEvents.cs" />
-    <Compile Include="Assets\Code\TestInventory\Inventory.cs" />
-    <Compile Include="Assets\Code\TestInventory\InventoryCell.cs" />
-    <Compile Include="Assets\Code\TestInventory\ItemScenePresenter.cs" />
-    <Compile Include="Assets\Code\TestInventory\ItemsEjector.cs" />
-    <Compile Include="Assets\Code\TestInventory\ItemsObjectPool.cs" />
-    <Compile Include="Assets\Code\TestInventory\MovingAlongCurve.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test1\InventoryCell.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsRewardVideo.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsVideo.cs" />
@@ -405,6 +412,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>F:/Program Files/Unity Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>F:/UnityProjects/RoadRacingRanner/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>F:/Program Files/Unity Hub/Editor/2019.4.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

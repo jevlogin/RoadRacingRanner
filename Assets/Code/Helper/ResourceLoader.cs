@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using Object = UnityEngine.Object;
 
 
 namespace JevLogin
@@ -11,7 +11,7 @@ namespace JevLogin
             return Resources.Load<GameObject>(viewPath.PathResource);
         }
 
-        internal static T LoadObject<T>(ResourcePath resourcePath) where T : Component
+        internal static T LoadObject<T>(ResourcePath resourcePath) where T : Object
         {
             return Resources.Load<T>(resourcePath.PathResource);
         }

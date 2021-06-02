@@ -24,17 +24,22 @@ namespace JevLogin
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private float _diffAudio = 0.01f;
 
+
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
             _audioSource = GetComponent<AudioSource>();
+
             _motorStop = WheelJoint2DBack.motor;
 
             _motorActivated = _motorStop;
             _motorActivated.motorSpeed = _speedMotor;
 
             IsRotateWheels.SubscriptionOnChange(SwitchValueRotate);
-            Invoke(nameof(PlayCarEngine), _audioStartEngine.length - _diffAudio);
+            if (_audioSource.isActiveAndEnabled)
+            {
+                Invoke(nameof(PlayCarEngine), _audioStartEngine.length - _diffAudio); 
+            }
         }
 
         private void PlayCarEngine()
@@ -73,11 +78,14 @@ namespace JevLogin
 
         private void SwitchAudioClip(AudioClip audioSoundInMotion)
         {
-            if (_audioSource.isPlaying)
+            if (_audioSource.isActiveAndEnabled)
             {
-                _audioSource.Pause();
-                _audioSource.clip = audioSoundInMotion;
-                _audioSource.Play();
+                if (_audioSource.isPlaying)
+                {
+                    _audioSource.Pause();
+                    _audioSource.clip = audioSoundInMotion;
+                    _audioSource.Play();
+                } 
             }
         }
 

@@ -10,6 +10,7 @@ namespace JevLogin
         private SubscriptionProperty<float> _leftMove;
         private SubscriptionProperty<float> _rightMove;
         protected float _speed;
+        CarController _carController;
 
         #endregion
 
@@ -22,6 +23,15 @@ namespace JevLogin
             _rightMove = rightMove;
             _speed = speed;
         }
+
+        public virtual void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed, CarController carController) 
+        {
+            _leftMove = leftMove;
+            _rightMove = rightMove;
+            _speed = speed;
+            _carController = carController;
+        }
+
 
         #endregion
 
