@@ -28,6 +28,7 @@ namespace JevLogin
             _rightMoveDiff = rightMoveDiff;
         }
 
+
         internal CarView CarView { get => _carView; }
 
         public GameObject GetViewObject()

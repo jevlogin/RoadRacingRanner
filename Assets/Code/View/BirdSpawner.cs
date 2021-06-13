@@ -33,7 +33,7 @@ namespace JevLogin
 
         private void OnDestroy()
         {
-            Debug.Log($"Count die Bird = {_countBirdDead.Value}");
+            //Debug.Log($"Count die Bird = {_countBirdDead.Value}");
             _unityAnalyticTools.SendMessage($"Count die Bird = {_countBirdDead.Value}");
         }
         #endregion

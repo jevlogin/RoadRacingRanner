@@ -24,8 +24,8 @@ namespace JevLogin
         #region ClassLifeCycles
 
         public ShedController(
-            [NotNull] List<UpgradeItemConfig> upgradeItemConfigs, 
-            [NotNull] Car car, [NotNull] InventoryController inventoryController)
+            [NotNull] List<UpgradeItemConfig> upgradeItemConfigs,
+            [NotNull] Car car, [NotNull] InventoryController inventoryController, InventoryModel inventoryModel)
         {
             if (upgradeItemConfigs == null)
             {
@@ -39,7 +39,7 @@ namespace JevLogin
             _upgradeItemsRepository = new ItemsRepository(upgradeItemConfigs.Select(value => value.ItemConfig).ToList());
             AddController(_upgradeItemsRepository);
 
-            _inventoryModel = new InventoryModel();
+            _inventoryModel = inventoryModel;
 
             _inventoryController = inventoryController;
             _inventoryController.InventoryModelEquipped += Enter;
@@ -65,14 +65,11 @@ namespace JevLogin
 
         private void UpgradeCarWithEquippedItems(IUpgradable car, IReadOnlyList<IItem> items, IReadOnlyDictionary<int, IUpgradeCarHandler> upgradeItems)
         {
-
             foreach (var equippedItem in items)
             {
                 if (upgradeItems.TryGetValue(equippedItem.Id, out var handler))
                 {
-                    Debug.Log($"car speed Before = {car.Speed}");
                     handler.Upgrade(car);
-                    Debug.Log($"car speed After = {car.Speed}");
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace JevLogin
         #region Fields
 
         private static readonly List<IItem> _emptyCollection = new List<IItem>();
-        private readonly List<IItem> _equippedItems = new List<IItem>();
+        private List<IItem> _equippedItems = new List<IItem>();
 
         #endregion
 

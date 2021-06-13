@@ -44,7 +44,7 @@ namespace JevLogin
 
             var inventoryController = new InventoryController(_inventoryModel, itemsRepository, _inventoryView, profilePlayer);
 
-            var shedController = new ShedController(itemConfigData, profilePlayer.CurrentCar, inventoryController);
+            var shedController = new ShedController(itemConfigData, profilePlayer.CurrentCar, inventoryController, _inventoryModel);
             AddController(shedController);
 
         }

@@ -67,7 +67,10 @@ namespace JevLogin
         {
             if (_isGaz)
             {
+                Debug.Log($"_speed = {_speed}");
+
                 float moveStep = _speed * Time.deltaTime;
+
                 if (moveStep > 0)
                 {
                     OnRightMove(moveStep);

@@ -34,10 +34,10 @@ namespace JevLogin
                 }
                 upgradeItemsMapById.Add(config.Id, CreateHandlerByType(config));
             }
-            foreach (var item in UpgradeItems)
-            {
-                Debug.Log($"item.Value - {item.Value}");
-            }
+            //foreach (var item in UpgradeItems)
+            //{
+            //    Debug.Log($"item.Value - {item.Value}");
+            //}
         }
 
         private IUpgradeCarHandler CreateHandlerByType(UpgradeItemConfig config)
@@ -45,7 +45,6 @@ namespace JevLogin
             switch (config.Type)
             {
                 case UpgradeType.Speed:
-                    Debug.Log($"был создан SpeedUpgradeCarHandler");
                     return new SpeedUpgradeCarHandler(config.ValueUpgrade);
                 default:
                     return StubUpgradeCarHandler.Default;
