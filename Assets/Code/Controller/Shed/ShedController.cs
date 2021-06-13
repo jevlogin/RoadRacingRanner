@@ -42,6 +42,7 @@ namespace JevLogin
             _inventoryModel = new InventoryModel();
 
             _inventoryController = inventoryController;
+            _inventoryController.InventoryModelEquipped += Enter;
             AddController(_inventoryController);
         }
 
@@ -52,8 +53,8 @@ namespace JevLogin
 
         public void Enter()
         {
-            _inventoryController.ShowInventory(Exit);
             Debug.Log($"Enter: car has speed : {_car.Speed}");
+            _inventoryController.ShowInventory(Exit);
         }
 
         public void Exit()
@@ -69,7 +70,9 @@ namespace JevLogin
             {
                 if (upgradeItems.TryGetValue(equippedItem.Id, out var handler))
                 {
+                    Debug.Log($"car speed Before = {car.Speed}");
                     handler.Upgrade(car);
+                    Debug.Log($"car speed After = {car.Speed}");
                 }
             }
         }

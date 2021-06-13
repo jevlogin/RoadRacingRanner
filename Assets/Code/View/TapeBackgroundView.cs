@@ -23,7 +23,8 @@ namespace JevLogin
 
         private void Move(float value)
         {
-            //TODO - здесь идет сдвиг. Разобраться что не так.
+            //Debug.Log($"_diff.value = {value}");
+
             if (_backgrounds != null)
             {
                 foreach (Background background in _backgrounds)

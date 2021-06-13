@@ -1,8 +1,5 @@
 ﻿using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 
@@ -11,6 +8,8 @@ namespace JevLogin
     internal sealed class InventoryController : BaseController, IInventoryController
     {
         #region Fields
+
+        public event Action InventoryModelEquipped = delegate () { };
 
         private readonly IInventoryModel _inventoryModel;
         private readonly IItemsRepository _itemsRepository;
@@ -32,37 +31,42 @@ namespace JevLogin
             _itemsRepository = itemsRepository ?? throw new ArgumentNullException(nameof(itemsRepository));
             _inventoryView = inventoryView ?? throw new ArgumentNullException(nameof(inventoryView));
             _profilePlayer = profilePlayer;
-        } 
+            _inventoryView.Selected += _inventoryView_Selected;
+            _inventoryView.Deselected += _inventoryView_Deselected;
+        }
 
-        #endregion
+        protected override void OnDispose()
+        {
+            base.OnDispose();
+            _inventoryView.Selected -= _inventoryView_Selected;
+            _inventoryView.Deselected -= _inventoryView_Deselected;
+        }
 
+        private void _inventoryView_Deselected(object sender, IItem item)
+        {
+            _inventoryModel.UnequipItem(item);
+            throw new NotImplementedException();
+        }
+
+        private void _inventoryView_Selected(object sender, IItem item)
+        {
+            _inventoryModel.EquipItem(item);
+            Debug.Log($"Предмет использован! - {item.Info.Name}");
+
+            InventoryModelEquipped.Invoke();
+        }
 
         public void HideInventory()
         {
-
+            throw new NotImplementedException();
         }
 
         public void ShowInventory(Action callback)
         {
-            
+            callback?.Invoke();
         }
 
-        internal void Init()
-        {
-            _inventoryView.Display((_itemsRepository.Items.Values).ToList());
-            _inventoryView.Selected += _inventoryView_Selected;
-        }
+        #endregion
 
-        private void _inventoryView_Selected(object sender, IItem e)
-        {
-            Debug.Log($"Выбрасываю предмет {e.Id} - Name = {e.Info.Name}");
-            if (_itemsRepository.Items.TryGetValue(e.Id, out var item))
-            {
-                if (item.Id == 1)
-                {
-                    _profilePlayer.CurrentCar.Speed += 1000;
-                }
-            }
-        }
     }
 }

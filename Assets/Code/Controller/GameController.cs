@@ -37,16 +37,15 @@ namespace JevLogin
 
             List<UpgradeItemConfig> itemConfigData = ContentDataSourceLoader.LoadUpgradeItemConfigs(new ResourcePath { PathResource = "Data/Upgrade/UpgradeItemConfigDataSource" });
 
-            foreach (var item in itemConfigData)
-            {
-                _itemsConfigs.Add(item.ItemConfig);
-            }
 
-            ItemsRepository itemsRepository = new ItemsRepository(_itemsConfigs);
+            ItemsRepository itemsRepository = new ItemsRepository(itemConfigData.Select(value => value.ItemConfig).ToList());
+
+            _inventoryView.Display(itemsRepository.Items.Values.ToList());
 
             var inventoryController = new InventoryController(_inventoryModel, itemsRepository, _inventoryView, profilePlayer);
-            inventoryController.Init();
-            AddController(inventoryController);
+
+            var shedController = new ShedController(itemConfigData, profilePlayer.CurrentCar, inventoryController);
+            AddController(shedController);
 
         }
     }

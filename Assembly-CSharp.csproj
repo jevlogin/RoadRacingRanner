@@ -133,7 +133,8 @@
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfig.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfigDataSource.cs" />
     <Compile Include="Assets\Code\TestEvents.cs" />
-    <Compile Include="Assets\Code\TestInventory\Test1\InventoryCell.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test2\ItemDragDrop.cs" />
+    <Compile Include="Assets\Code\TestInventory\Test2\ItemSlot.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsRewardVideo.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsVideo.cs" />

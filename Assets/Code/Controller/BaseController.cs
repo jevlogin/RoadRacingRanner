@@ -70,7 +70,6 @@ namespace JevLogin
 
         protected virtual void OnDispose()
         {
-
         }
 
         #endregion
