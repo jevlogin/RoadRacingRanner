@@ -45,7 +45,6 @@ namespace JevLogin
         private void _inventoryView_Deselected(object sender, IItem item)
         {
             _inventoryModel.UnequipItem(item);
-            throw new NotImplementedException();
         }
 
         private void _inventoryView_Selected(object sender, IItem item)

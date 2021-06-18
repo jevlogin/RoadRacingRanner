@@ -1,5 +1,4 @@
-﻿using JoostenProductions;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 using Object = UnityEngine.Object;
 //TODO IAbilityActivator
@@ -15,6 +14,7 @@ namespace JevLogin
         private readonly SubscriptionProperty<float> _leftMoveDiff;
         private readonly SubscriptionProperty<float> _rightMoveDiff;
         private CarView _carView;
+        private Car _currentCar;
 
         #endregion
 
@@ -24,6 +24,7 @@ namespace JevLogin
         public CarController(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff, Car currentCar)
         {
             _carView = LoadView<CarView>(_viewPath);
+            _currentCar = currentCar;
             _leftMoveDiff = leftMoveDiff;
             _rightMoveDiff = rightMoveDiff;
         }

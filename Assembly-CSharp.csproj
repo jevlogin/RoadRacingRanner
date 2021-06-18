@@ -89,6 +89,7 @@
     <Compile Include="Assets\Code\DOTween\MessageBox\MessageBoxBehaviour.cs" />
     <Compile Include="Assets\Code\DOTween\SidePanel\SidePanelMoveBehaviour.cs" />
     <Compile Include="Assets\Code\DOTween\SidePanel\SidePanelTween.cs" />
+    <Compile Include="Assets\Code\EventPointerDownAndUpHandler.cs" />
     <Compile Include="Assets\Code\GunAbility.cs" />
     <Compile Include="Assets\Code\Helper\AxisManager.cs" />
     <Compile Include="Assets\Code\Helper\Extensions.cs" />
@@ -132,7 +133,6 @@
     <Compile Include="Assets\Code\ScriptableObject\Inventory\ItemInfo.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfig.cs" />
     <Compile Include="Assets\Code\ScriptableObject\Upgrade\UpgradeItemConfigDataSource.cs" />
-    <Compile Include="Assets\Code\TestEvents.cs" />
     <Compile Include="Assets\Code\TestInventory\Test2\ItemDragDrop.cs" />
     <Compile Include="Assets\Code\TestInventory\Test2\ItemSlot.cs" />
     <Compile Include="Assets\Code\Unity\Ads\AdsBanner.cs" />

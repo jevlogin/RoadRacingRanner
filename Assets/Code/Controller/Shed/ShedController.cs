@@ -53,15 +53,16 @@ namespace JevLogin
 
         public void Enter()
         {
-            Debug.Log($"Enter: car has speed : {_car.Speed}");
             _inventoryController.ShowInventory(Exit);
         }
 
         public void Exit()
         {
             UpgradeCarWithEquippedItems(_car, _inventoryModel.GetEquippedItems(), _upgradeHandlerRepository.UpgradeItems);
-            Debug.Log($"Exit: car has speed : {_car.Speed}");
+            _car.SpeedProperty.Value = _car.Speed;
         }
+
+       
 
         private void UpgradeCarWithEquippedItems(IUpgradable car, IReadOnlyList<IItem> items, IReadOnlyDictionary<int, IUpgradeCarHandler> upgradeItems)
         {

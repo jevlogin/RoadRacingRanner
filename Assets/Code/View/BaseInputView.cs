@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace JevLogin
@@ -24,12 +25,19 @@ namespace JevLogin
             _speed = speed;
         }
 
-        public virtual void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed, CarController carController) 
+        public virtual void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, Car currentCar, CarController carController) 
         {
             _leftMove = leftMove;
             _rightMove = rightMove;
-            _speed = speed;
+            _speed = currentCar.SpeedProperty.Value;
+            currentCar.SpeedProperty.SubscriptionOnChange(SpeedChange);
             _carController = carController;
+        }
+
+        private void SpeedChange(float value)
+        {
+            _speed = value;
+
         }
 
 

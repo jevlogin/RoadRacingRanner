@@ -1,5 +1,4 @@
 ﻿using JoostenProductions;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,12 +21,14 @@ namespace JevLogin
         private CarController _carController;
 
         private CameraShakeBehaviour _cameraShake;
+        private Car _currentCar;
 
-        public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, float speed, CarController carController)
+        public override void Init(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, Car currentCar, CarController carController)
         {
-            base.Init(leftMove, rightMove, speed, carController);
+            base.Init(leftMove, rightMove, currentCar, carController);
             _carController = carController;
             _cameraShake = Camera.main.GetComponent<CameraShakeBehaviour>();
+            _currentCar = currentCar;
 
             UpdateManager.SubscribeToUpdate(Move);
 
@@ -41,9 +42,10 @@ namespace JevLogin
 
             _buttonJump.onClick.AddListener(JumpCar);
 
-            _isButtonPressedProperty = _buttonGaz.GetComponent<TestEvents>().IsButtonPressed;
+            _isButtonPressedProperty = _buttonGaz.GetComponent<EventPointerDownAndUpHandler>().IsButtonPressed;
             _isButtonPressedProperty.SubscriptionOnChange(SwitchValue);
         }
+
 
         private void OnDestroy()
         {
@@ -67,8 +69,6 @@ namespace JevLogin
         {
             if (_isGaz)
             {
-                Debug.Log($"_speed = {_speed}");
-
                 float moveStep = _speed * Time.deltaTime;
 
                 if (moveStep > 0)

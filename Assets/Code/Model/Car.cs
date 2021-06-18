@@ -1,6 +1,8 @@
-﻿namespace JevLogin
+﻿using System;
+
+namespace JevLogin
 {
-    internal sealed class Car : IUpgradable
+    internal sealed class Car : IUpgradable, IDisposable
     {
         #region Fields
 
@@ -11,6 +13,7 @@
 
         #region Properties
 
+        public SubscriptionProperty<float> SpeedProperty;
         public float Speed { get; set; }
 
         #endregion
@@ -21,7 +24,15 @@
         public Car(float speed)
         {
             _defaultSpeed = speed;
+            SpeedProperty = new SubscriptionProperty<float>();
+            SpeedProperty.SubscriptionOnChange(ChangeSpeed);
+
             Restore();
+        }
+
+        private void ChangeSpeed(float value)
+        {
+            Speed = value;
         }
 
         #endregion
@@ -31,7 +42,12 @@
 
         public void Restore()
         {
-            Speed = _defaultSpeed;
+            SpeedProperty.Value = _defaultSpeed;
+        }
+
+        public void Dispose()
+        {
+            SpeedProperty.UnSubscriptionOnChange(ChangeSpeed);
         }
 
         #endregion

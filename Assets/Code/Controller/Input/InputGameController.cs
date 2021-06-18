@@ -24,7 +24,7 @@ namespace JevLogin
             _carView = carView;
             _viewPath = new ResourcePath { PathResource = Path.Combine(ManagerPath.PREFABS, ManagerPath.FLOATINPUTJOYSTICK) };
             _view = LoadView<BaseInputView>(_viewPath);
-            _view.Init(leftMoveDiff, rightMoveDiff, currentCar.Speed, carView);
+            _view.Init(leftMoveDiff, rightMoveDiff, currentCar, carView);
         }
 
         #endregion

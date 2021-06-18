@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace JevLogin
 {
-    internal sealed class TestEvents : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    internal sealed class EventPointerDownAndUpHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
 
         public SubscriptionProperty<bool> IsButtonPressed = new SubscriptionProperty<bool>();
